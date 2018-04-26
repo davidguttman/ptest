@@ -9,7 +9,9 @@ module.exports = function transactions (state, emit) {
       <div>
         <div class=${styles.main}>
           <div class='pa4'>
+            <div class='f1 mb4'>Personality Type Test</div>
             ${renderQuestionList()}
+            ${renderResult()}
           </div>
         </div>
       </div>
@@ -30,18 +32,32 @@ module.exports = function transactions (state, emit) {
     var answer = state.answers[i]
 
     return html`
-      <div class='pa4'>
-        <div class='f3 pa4'>${q}</div>
-        <button
-          onclick=${chooseAnswer(i, 0)}
-          class=${answer === 0 ? styles.buttonAnswer : styles.button}>
-          ${a}
-        </button>
-        <button
-          onclick=${chooseAnswer(i, 1)}
-          class=${answer === 1 ? styles.buttonAnswer : styles.button}>
-          ${b}
-        </button>
+      <div class='mb4'>
+        <div class='f3 pa2'>${q}</div>
+
+        <div class='flex justify-center'>
+          <button
+            onclick=${chooseAnswer(i, 0)}
+            class=${answer === 0 ? styles.buttonAnswer : styles.button}>
+            ${a}
+          </button>
+          <button
+            onclick=${chooseAnswer(i, 1)}
+            class=${answer === 1 ? styles.buttonAnswer : styles.button}>
+            ${b}
+          </button>
+        </div>
+      </div>
+    `
+  }
+
+  function renderResult () {
+    return html`
+      <div class='mt5 pa4 ba bg-dark-gray'>
+        <div class='f3 light-gray fwb mb2'>Your Personality Type:</div>
+        <div class='f1 ttu white'>
+          ${state.score ? state.score.type : '-'}
+        </div>
       </div>
     `
   }
