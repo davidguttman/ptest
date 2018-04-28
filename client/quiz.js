@@ -36,16 +36,16 @@ module.exports = function transactions (state, emit) {
         <div class='f3 pa2'>${q}</div>
 
         <div class='flex justify-center'>
-          <button
+          <span
             onclick=${chooseAnswer(i, 0)}
             class=${answer === 0 ? styles.buttonAnswer : styles.button}>
             ${a}
-          </button>
-          <button
+          </span>
+          <span
             onclick=${chooseAnswer(i, 1)}
             class=${answer === 1 ? styles.buttonAnswer : styles.button}>
             ${b}
-          </button>
+          </span>
         </div>
       </div>
     `
